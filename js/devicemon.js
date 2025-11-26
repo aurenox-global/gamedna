@@ -60,7 +60,7 @@ let state = {
 };
 
 // --- IDIOMAS ---
-const translations = {
+var translations = {
     es: {
         lab: "Laboratorio",
         train: "Entrenamiento",
@@ -163,7 +163,10 @@ const translations = {
     }
 };
 
-let currentLang = localStorage.getItem('devicemon_lang') || 'es';
+var currentLang = localStorage.getItem('devicemon_lang');
+if (!currentLang || !translations[currentLang]) {
+    currentLang = 'es';
+}
 
 function changeLanguage(lang) {
     currentLang = lang;
